@@ -46,12 +46,6 @@ export function Contact() {
         <a href={`mailto:${site.email}`} data-hover>
           {site.email}
         </a>
-        {calendly.url === "" && (
-          <em className={styles.setup}>
-            Calendly link not set — add NEXT_PUBLIC_CALENDLY_URL to enable
-            booking.
-          </em>
-        )}
       </Reveal>
     </section>
   );

@@ -1,0 +1,11 @@
+.line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.06em;
+}
+
+.inner {
+  display: block;
+  font-style: inherit;
+  will-change: transform;
+}

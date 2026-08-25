@@ -1,0 +1,115 @@
+.foot {
+  padding: clamp(6rem, 12vw, 10rem) var(--gut) 2.5rem;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  font-size: 0.76rem;
+  color: var(--fg-2);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4ade80;
+}
+
+.pillDetail {
+  color: var(--fg-3);
+  border-left: 1px solid var(--line);
+  padding-left: 0.6rem;
+}
+
+.cta {
+  display: block;
+}
+
+.ctaHeading em {
+  font-style: normal;
+}
+
+.mail {
+  position: relative;
+  display: inline-block;
+  margin-top: 2rem;
+  font-size: 1.05rem;
+  color: var(--fg-2);
+  padding-bottom: 4px;
+}
+
+.mail::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 1px;
+  width: 100%;
+  background: var(--fg-3);
+  transform-origin: 100% 50%;
+  transition: transform 0.5s var(--ease);
+}
+
+.cta:hover .mail::after {
+  transform: scaleX(0);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: clamp(4rem, 9vw, 7rem);
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
+}
+
+.grid > div > :global(.label) {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.grid a {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--fg-2);
+  transition: color 0.3s;
+}
+
+.grid a:hover {
+  color: var(--fg);
+}
+
+.grid p {
+  font-size: 0.95rem;
+  color: var(--fg-2);
+  font-weight: 300;
+}
+
+.base {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 4rem;
+  font-size: 0.76rem;
+  color: var(--fg-3);
+}
+
+@media (max-width: 1000px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

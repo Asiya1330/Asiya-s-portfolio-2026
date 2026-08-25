@@ -1,0 +1,11 @@
+export { Hero } from "./Hero";
+export { Marquee } from "./Marquee";
+export { Statement } from "./Statement";
+export { Work } from "./Work";
+export { Plate } from "./Plate";
+export { About } from "./About";
+export { WhyMe } from "./WhyMe";
+export { Reviews } from "./Reviews";
+export { Faq } from "./Faq";
+export { Contact } from "./Contact";
+export { SiteFooter } from "./SiteFooter";

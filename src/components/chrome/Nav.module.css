@@ -1,0 +1,123 @@
+.nav {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 150;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.5rem var(--gut);
+  transition: padding 0.5s var(--ease);
+}
+
+.stuck {
+  padding-block: 0.9rem;
+}
+
+.stuck::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--bg);
+  opacity: 0.82;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--line);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
+}
+
+.mark {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.links {
+  display: flex;
+  gap: 2.2rem;
+}
+
+.links a {
+  position: relative;
+  font-size: 0.82rem;
+  color: var(--fg-2);
+  padding-bottom: 2px;
+  transition: color 0.3s;
+}
+
+.links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 1px;
+  width: 0;
+  background: currentColor;
+  transition: width 0.4s var(--ease);
+}
+
+.links a:hover {
+  color: var(--fg);
+}
+
+.links a:hover::after {
+  width: 100%;
+}
+
+/* the pill sits over the hero photograph, so it carries its own
+   contrast rather than inheriting the section's */
+.cta {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.76rem;
+  color: #f2efec;
+  background: rgb(11 10 18 / 0.55);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgb(255 255 255 / 0.2);
+  border-radius: 999px;
+  padding: 0.5rem 0.95rem;
+  white-space: nowrap;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s;
+}
+
+.cta:hover {
+  background: rgb(11 10 18 / 0.8);
+  border-color: rgb(255 255 255 / 0.4);
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 0 0 rgb(74 222 128 / 0.6);
+  animation: pulse 2.4s infinite;
+}
+
+@keyframes pulse {
+  70% {
+    box-shadow: 0 0 0 7px rgb(74 222 128 / 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgb(74 222 128 / 0);
+  }
+}
+
+@media (max-width: 640px) {
+  .links {
+    display: none;
+  }
+}

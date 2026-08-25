@@ -1,0 +1,288 @@
+.work {
+  padding: clamp(6rem, 11vw, 9rem) 0 0;
+}
+
+.head {
+  margin-bottom: 4.5rem;
+}
+
+.head h2 {
+  margin-top: 0.4rem;
+}
+
+/* ---------------------------------------------- featured sticky stack */
+.stack {
+  padding: 0 var(--gut) clamp(4rem, 7vw, 6rem);
+}
+
+.card {
+  position: sticky;
+  top: calc(11vh + var(--i) * 26px);
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+  will-change: transform;
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  /* grid items default to min-width:auto and refuse to shrink below
+     their content — without this a long blurb widens the whole card */
+  gap: clamp(1.5rem, 3vw, 3rem);
+  align-items: center;
+  min-height: min(74vh, 620px);
+  padding: clamp(1.6rem, 2.6vw, 2.6rem);
+  border-radius: 6px;
+  background: var(--ink-2);
+  border: 1px solid rgb(255 255 255 / 0.09);
+}
+
+.inner > * {
+  min-width: 0;
+}
+
+.num {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--violet-soft);
+}
+
+.title {
+  margin: 0.8rem 0 1rem;
+}
+
+.text p {
+  color: var(--fg-2);
+  font-weight: 300;
+  max-width: 40ch;
+}
+
+.badges {
+  list-style: none;
+  display: flex;
+  gap: 0.45rem;
+  margin-top: 1.2rem;
+}
+
+.badges li {
+  font-size: 0.64rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.28rem 0.6rem;
+  border-radius: 4px;
+  background: rgb(255 255 255 / 0.08);
+  color: var(--fg-2);
+}
+
+.badges .ai {
+  background: var(--violet);
+  color: #fff;
+}
+
+.badges .muted {
+  background: none;
+  border: 1px dashed var(--line);
+}
+
+.tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 1.2rem;
+}
+
+.tags li {
+  font-size: 0.72rem;
+  color: var(--fg-2);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.3rem 0.75rem;
+}
+
+.visit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.8rem;
+  font-size: 0.86rem;
+  color: var(--fg);
+  border-bottom: 1px solid var(--fg-3);
+  padding-bottom: 3px;
+}
+
+.arrow {
+  width: 12px;
+  height: 12px;
+  flex: 0 0 auto;
+  transition: transform 0.4s var(--ease);
+}
+
+.visit:hover .arrow,
+a:hover > .arrow {
+  transform: translate(2px, -2px);
+}
+
+.shot,
+.tileShot,
+.clientShot {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 5px;
+  background: #0a0910;
+  border: 1px solid rgb(255 255 255 / 0.1);
+}
+
+/* width drives the box, not height: with `height: 100%` the aspect
+   ratio computed a width from the row height and overflowed the column,
+   which put a horizontal scrollbar on the whole page */
+.shot {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  box-shadow: 0 40px 80px -40px rgb(0 0 0 / 0.8);
+}
+
+.image {
+  object-fit: cover;
+  object-position: 50% 0;
+  transition: transform 0.7s var(--ease);
+}
+
+.shot:hover .image,
+.tile a:hover .image {
+  transform: scale(1.03);
+}
+
+.noShot {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--ink-2), #0a0910);
+}
+
+/* --------------------------------------------------------- shared */
+.block {
+  padding-bottom: clamp(4rem, 7vw, 6rem);
+}
+
+.subhead {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-bottom: 1.2rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.subnote {
+  font-size: 0.76rem;
+  color: var(--fg-3);
+}
+
+/* ------------------------------------------------------ product grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: clamp(1rem, 2vw, 1.6rem);
+}
+
+.tile a {
+  display: grid;
+  gap: 1rem;
+}
+
+.tileShot {
+  aspect-ratio: 16 / 10;
+}
+
+.tileBody {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.tileBody b {
+  font-weight: 400;
+  font-size: 1.02rem;
+  letter-spacing: -0.01em;
+}
+
+.tileBlurb {
+  font-size: 0.86rem;
+  font-weight: 300;
+  color: var(--fg-2);
+}
+
+.tileStack {
+  font-size: 0.72rem;
+  color: var(--fg-3);
+  margin-top: 0.2rem;
+}
+
+/* ------------------------------------------------------ client list */
+.clients {
+  list-style: none;
+  display: grid;
+}
+
+.clients li + li {
+  border-top: 1px solid var(--line);
+}
+
+.clients a {
+  display: grid;
+  grid-template-columns: 96px 1.1fr 1.4fr auto 12px;
+  align-items: center;
+  gap: clamp(1rem, 2.4vw, 2rem);
+  padding: 1rem 0;
+  transition: opacity 0.3s;
+}
+
+.clients a:hover {
+  opacity: 0.72;
+}
+
+.clientShot {
+  aspect-ratio: 16 / 10;
+  border-radius: 4px;
+}
+
+.clientName {
+  font-size: 1rem;
+}
+
+.clientBlurb {
+  font-size: 0.86rem;
+  font-weight: 300;
+  color: var(--fg-2);
+}
+
+.clientDomain {
+  font-size: 0.76rem;
+  color: var(--fg-3);
+}
+
+@media (max-width: 1000px) {
+  .inner {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+  .clients a {
+    grid-template-columns: 72px 1fr auto;
+  }
+  .clientBlurb {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .card {
+    position: static;
+  }
+  .clients a {
+    grid-template-columns: 60px 1fr;
+  }
+  .clientDomain {
+    display: none;
+  }
+}

@@ -1,0 +1,29 @@
+.marquee {
+  background: var(--ink);
+  color: #f2efec;
+  padding: 1.5rem 0;
+  overflow: hidden;
+  border-top: 1px solid rgb(255 255 255 / 0.08);
+  border-bottom: 1px solid rgb(255 255 255 / 0.08);
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  white-space: nowrap;
+  font-size: clamp(1.1rem, 2vw, 1.7rem);
+  font-weight: 200;
+  letter-spacing: -0.02em;
+}
+
+.track span {
+  display: flex;
+  align-items: center;
+  gap: 2.6rem;
+  padding-right: 2.6rem;
+}
+
+.track b {
+  font-weight: 200;
+  color: var(--violet-soft);
+}

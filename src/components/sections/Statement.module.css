@@ -1,0 +1,15 @@
+.statement {
+  padding: clamp(7rem, 15vw, 12rem) var(--gut);
+  max-width: var(--measure);
+  margin-inline: auto;
+}
+
+/* the reference sets this one large and lets it run wide — at displayM
+   it read as a caption rather than a statement */
+.body {
+  max-width: 22ch;
+}
+
+.word {
+  opacity: 0.16;
+}

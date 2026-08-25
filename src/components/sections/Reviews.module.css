@@ -1,0 +1,118 @@
+.reviews {
+  padding-block: clamp(6rem, 11vw, 9rem) clamp(6rem, 11vw, 9rem);
+  overflow: hidden;
+}
+
+.head {
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.body {
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: clamp(1rem, 1.8vw, 1.5rem);
+  align-items: start;
+}
+
+.card {
+  display: grid;
+  gap: 1rem;
+  padding: clamp(1.3rem, 2.2vw, 1.8rem);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--ink-2);
+}
+
+.card blockquote {
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--fg);
+}
+
+.card blockquote::before {
+  content: "“";
+}
+
+.card blockquote::after {
+  content: "”";
+}
+
+.card figcaption {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--line);
+}
+
+/* a real initial, not a stock face — Upwork publishes no client photos */
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--violet) 42%, transparent);
+  color: #fff;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+}
+
+.who {
+  display: grid;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.who b {
+  font-weight: 400;
+  font-size: 0.9rem;
+}
+
+.who > span {
+  font-size: 0.74rem;
+  color: var(--fg-3);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.foot {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: clamp(1.6rem, 3vw, 2.4rem);
+}
+
+.verify {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  color: var(--fg-2);
+  transition: border-color 0.3s;
+}
+
+.verify:hover {
+  border-color: var(--fg-3);
+}
+
+.verify b {
+  font-weight: 400;
+  color: var(--fg);
+}
+
+.footNote {
+  font-size: 0.76rem;
+  color: var(--fg-3);
+}

@@ -1,0 +1,102 @@
+.faq {
+  padding-block: clamp(6rem, 11vw, 9rem) clamp(7rem, 13vw, 11rem);
+}
+
+.head {
+  margin-bottom: 3.5rem;
+}
+
+/* full bleed within the shell — a squeezed column reads as an
+   afterthought next to a headline that spans the page */
+.list {
+  width: 100%;
+}
+
+.row {
+  border-top: 1px solid var(--line);
+}
+
+.row:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.6rem clamp(0.6rem, 1.6vw, 1.4rem);
+  text-align: left;
+  font-size: clamp(1.15rem, 2vw, 1.7rem);
+  font-weight: 300;
+  letter-spacing: -0.022em;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.35s var(--ease);
+}
+
+.question:hover,
+.isOpen .question {
+  background: color-mix(in srgb, var(--fg) 5%, transparent);
+}
+
+.icon {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  border-radius: 10px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  transition: background-color 0.35s var(--ease);
+}
+
+.isOpen .icon {
+  background: var(--accent);
+}
+
+.icon::before,
+.icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: var(--accent);
+  transform: translate(-50%, -50%);
+}
+
+.icon::before {
+  width: 15px;
+  height: 1.4px;
+}
+
+.icon::after {
+  width: 1.4px;
+  height: 15px;
+  transition: transform 0.45s var(--ease);
+}
+
+.isOpen .icon::before,
+.isOpen .icon::after {
+  background: #fff;
+}
+
+.isOpen .icon::after {
+  transform: translate(-50%, -50%) scaleY(0);
+}
+
+.panel {
+  height: 0;
+  overflow: hidden;
+}
+
+.panel p {
+  color: var(--fg-2);
+  font-weight: 300;
+  font-size: 1rem;
+  max-width: 62ch;
+  padding: 0 clamp(0.6rem, 1.6vw, 1.4rem) 2rem;
+}

@@ -1,0 +1,29 @@
+.marquee {
+  display: grid;
+  gap: 0.1em;
+  overflow: hidden;
+  user-select: none;
+}
+
+.band {
+  overflow: hidden;
+}
+
+.row {
+  display: flex;
+  width: max-content;
+  white-space: nowrap;
+  font-size: clamp(2.6rem, 8vw, 8rem);
+  font-weight: 300;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  will-change: transform;
+}
+
+.row span {
+  padding-right: 0.35em;
+}
+
+.accent {
+  color: var(--accent);
+}

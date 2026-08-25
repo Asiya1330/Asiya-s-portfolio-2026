@@ -1,0 +1,187 @@
+@import "tailwindcss";
+
+/* =============================================================
+   Design system.
+
+   Only three things live here: the tokens, the reset, and the
+   typography primitives. Everything else is a CSS Module scoped to
+   its component, so nothing can leak.
+
+   Both themes are the same token names with different values, which
+   is why flipping one attribute on <body> re-colours the document.
+   ============================================================= */
+
+:root {
+  /* canvas */
+  --bone: #e7e2dc;
+  --ink: #0c0b10;
+  --ink-2: #131119;
+
+  /* accent */
+  --violet: #5b4be8;
+  --violet-soft: #b9b6ff;
+
+  /* resolved per theme — sections swap these, not their own colours */
+  --bg: var(--bone);
+  --fg: #0c0b10;
+  --fg-2: rgb(12 11 16 / 0.56);
+  --fg-3: rgb(12 11 16 / 0.34);
+  --line: rgb(12 11 16 / 0.14);
+  --accent: var(--violet);
+
+  --gut: 6vw;
+  --measure: 1500px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="dark"] {
+  --bg: var(--ink);
+  --fg: #f2efec;
+  --fg-2: rgb(242 239 236 / 0.58);
+  --fg-3: rgb(242 239 236 / 0.34);
+  --line: rgb(242 239 236 / 0.14);
+  --accent: var(--violet-soft);
+}
+
+/* expose the palette to Tailwind so the admin can use utilities later */
+@theme inline {
+  --color-bone: var(--bone);
+  --color-ink: var(--ink);
+  --color-violet: var(--violet);
+  --font-sans: var(--font-outfit);
+}
+
+/* ------------------------------------------------------------- reset */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background: var(--ink);
+}
+
+body {
+  font-family: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 1.55;
+  background: var(--bg);
+  color: var(--fg);
+  /* `clip` rather than `hidden`: hidden makes <body> a scroll container,
+     which competes with Lenis for wheel input. clip crops without one. */
+  overflow-x: clip;
+  transition:
+    background-color 0.6s var(--ease),
+    color 0.6s var(--ease);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* the custom cursor replaces the native one, but only once it mounts */
+@media (pointer: fine) {
+  body.hasCursor,
+  body.hasCursor a,
+  body.hasCursor button {
+    cursor: none;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+}
+
+::selection {
+  background: var(--violet);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ------------------------------------------------------------- type
+   One family, Outfit. Display sizes run Light with tight negative
+   tracking — the reference site computes to 74.4px / 300 / -0.031em
+   and this scale lands on top of it. */
+.display {
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.032em;
+}
+.displayXl {
+  font-size: clamp(2.5rem, 5vw, 6rem);
+  line-height: 1.14;
+}
+.displayL {
+  font-size: clamp(2.1rem, 4.2vw, 3.9rem);
+}
+.displayM {
+  font-size: clamp(1.5rem, 2.7vw, 2.5rem);
+  line-height: 1.25;
+  letter-spacing: -0.024em;
+}
+.displayS {
+  font-size: clamp(1.4rem, 2.1vw, 2rem);
+  letter-spacing: -0.022em;
+}
+.display em {
+  font-style: italic;
+  font-weight: 200;
+  color: var(--accent);
+}
+
+.label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--fg-2);
+}
+
+.idx {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--fg-3);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ------------------------------------------------------------- layout */
+.shell {
+  padding-inline: var(--gut);
+  max-width: var(--measure);
+  margin-inline: auto;
+}
+
+/* ------------------------------------------------------------- motion
+   Reveal pre-states are gated on the `scripting` media feature, so they
+   only apply when something exists to undo them. Doing this in CSS
+   rather than with a class added by an inline script keeps <html> out of
+   the hydration diff — React 19 will not suppress an attribute that a
+   script changed before it hydrated. */
+@media (scripting: enabled) {
+  [data-reveal] {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  [data-reveal] {
+    opacity: 1;
+  }
+}

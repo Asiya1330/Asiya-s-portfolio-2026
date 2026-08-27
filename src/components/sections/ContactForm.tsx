@@ -3,10 +3,8 @@
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 
-import {
-  initialContactState,
-  sendMessage,
-} from "@/app/actions/contact";
+import { sendMessage } from "@/app/actions/contact";
+import { initialContactState } from "@/app/actions/contact-state";
 import styles from "./Contact.module.css";
 
 export function ContactForm() {

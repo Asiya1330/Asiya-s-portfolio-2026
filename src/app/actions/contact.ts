@@ -1,16 +1,7 @@
 "use server";
 
 import { site } from "@/content";
-
-export interface ContactState {
-  status: "idle" | "sent" | "error";
-  message?: string;
-  fieldErrors?: Partial<Record<"name" | "email" | "message", string>>;
-  /** Echoed back so a rejected form does not lose what was typed. */
-  values?: { name: string; email: string; message: string };
-}
-
-export const initialContactState: ContactState = { status: "idle" };
+import type { ContactState } from "./contact-state";
 
 const EMAIL = /^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/;
 
@@ -73,7 +64,7 @@ export async function sendMessage(
         from,
         to: [site.email],
         reply_to: email,
-        subject: `Portfolio enquiry — ${name}`,
+        subject: `Client Message — ${name}`,
         text: `${name} <${email}>\n\n${message}`,
       }),
     });
